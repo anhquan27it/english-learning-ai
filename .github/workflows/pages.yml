@@ -1,5 +1,5 @@
-# Tự build bản tĩnh và cập nhật nhánh gh-pages mỗi khi push lên main.
-# GitHub Pages của repo phục vụ từ nhánh gh-pages (Settings → Pages → Deploy from a branch).
+# Build và deploy trực tiếp lên GitHub Pages mỗi khi push lên main.
+# Settings → Pages → Source phải là GitHub Actions.
 name: Deploy GitHub Pages
 
 on:
@@ -8,33 +8,44 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v6
       - run: npm ci
-      # Repo dạng <user>.github.io phục vụ ở gốc tên miền; repo khác cần basePath "/<tên-repo>".
       - name: Build static site
         run: npm run build:pages
         env:
-          PAGES_BASE_PATH: ${{ endsWith(github.event.repository.name, '.github.io') && '' || format('/{0}', github.event.repository.name) }}
-      - name: Publish to gh-pages branch
-        run: |
-          cd out
-          git init -q -b gh-pages
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -q -m "Deploy ${GITHUB_SHA::7}"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
