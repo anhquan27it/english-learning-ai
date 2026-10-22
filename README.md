@@ -45,8 +45,8 @@ Giọng nói của thầy dùng Web Speech API của trình duyệt — miễn p
 
 ## Đăng lên GitHub Pages
 
-Repo có sẵn workflow `.github/workflows/pages.yml`: mỗi lần push lên nhánh `main`, GitHub tự build bản tĩnh (`npm run build:pages`) và đăng lên Pages.
+Repo có sẵn workflow `.github/workflows/pages.yml`: mỗi lần push lên nhánh `main`, GitHub tự build bản tĩnh (`npm run build:pages`) và cập nhật nhánh `gh-pages`.
 
-- Lần đầu: vào **Settings → Pages → Source** của repo, chọn **GitHub Actions**.
+- Pages phục vụ từ nhánh `gh-pages` (**Settings → Pages → Deploy from a branch → gh-pages / (root)**).
 - Repo tên `<user>.github.io` sẽ chạy ở `https://<user>.github.io/`; repo khác chạy ở `https://<user>.github.io/<tên-repo>/` (basePath được tự đặt).
 - GitHub Pages chỉ phục vụ file tĩnh nên **không có máy chủ AI**: hỏi đáp sẽ trích nội dung bài học, trang soạn bài bằng AI bị tắt. Muốn bật AI cho người học, hãy chạy bản đầy đủ trên máy chủ (ví dụ Vercel miễn phí) với khóa AI trong biến môi trường.
