@@ -1,0 +1,326 @@
+import type { Lesson } from "../../types";
+import { say, show } from "../helpers";
+
+// Phần 2 (Các kiểu câu và dấu câu) và Phần 3 (Mệnh đề).
+
+export const sentenceTypes: Lesson = {
+  id: "sentence-types",
+  title: "Các kiểu câu và dấu câu",
+  summary: "Câu đơn, câu ghép, câu phức, câu ghép phức; FANBOYS và dấu phẩy.",
+  level: "beginner",
+  emoji: "🏗️",
+  minutes: 18,
+  scenes: [
+    {
+      id: "s1",
+      type: "slide",
+      title: "Mệnh đề là gì?",
+      subtitle: "Clause = Chủ ngữ + Động từ",
+      blocks: [
+        {
+          id: "table",
+          kind: "table",
+          headers: ["Loại mệnh đề", "Đặc điểm", "Ví dụ"],
+          rows: [
+            ["Độc lập", "Đứng riêng được như một câu", "She reads books."],
+            ["Phụ thuộc", "Không đứng riêng được, mở đầu bằng liên từ phụ thuộc", "because she loves stories"],
+          ],
+        },
+        { id: "img", kind: "image", emoji: "🧩", caption: "Ghép mệnh đề = xây câu" },
+      ],
+      actions: [
+        say("Để hiểu các kiểu câu, ta cần biết mệnh đề là gì. Mệnh đề là một nhóm từ có chủ ngữ và động từ."),
+        show("table"),
+        say("Mệnh đề độc lập có thể đứng riêng như một câu: `She reads books.` Còn mệnh đề phụ thuộc như `because she loves stories` thì không đứng một mình được."),
+      ],
+    },
+    {
+      id: "s2",
+      type: "slide",
+      title: "Bốn kiểu câu",
+      blocks: [
+        {
+          id: "cards",
+          kind: "cards",
+          items: [
+            { icon: "1️⃣", title: "Câu đơn (Simple)", text: "1 mệnh đề độc lập — She reads books." },
+            { icon: "2️⃣", title: "Câu ghép (Compound)", text: "≥ 2 mệnh đề độc lập — She reads books, and he writes poems." },
+            { icon: "3️⃣", title: "Câu phức (Complex)", text: "Độc lập + phụ thuộc — She reads books because she loves stories." },
+            { icon: "4️⃣", title: "Câu ghép phức", text: "Although I was tired, I finished my work, and I went to bed." },
+          ],
+        },
+        { id: "tip", kind: "text", tone: "tip", text: "IELTS: xen kẽ câu đơn (nêu ý), câu phức (giải thích) và câu ghép (bổ sung, đối lập). Mỗi câu chỉ nên dài 25–30 từ." },
+      ],
+      actions: [
+        show("cards"),
+        say("Có bốn kiểu câu. Câu đơn có một mệnh đề độc lập. Câu ghép có từ hai mệnh đề độc lập trở lên."),
+        say("Câu phức gồm một mệnh đề độc lập và ít nhất một mệnh đề phụ thuộc. Câu ghép phức là sự kết hợp của cả hai."),
+        show("tip"),
+        say("Trong bài viết, hãy xen kẽ các kiểu câu để vừa chính xác vừa đa dạng."),
+      ],
+    },
+    {
+      id: "s3",
+      type: "slide",
+      title: "Câu ghép với FANBOYS",
+      subtitle: "Coordinating conjunctions",
+      blocks: [
+        {
+          id: "table",
+          kind: "table",
+          headers: ["Liên từ", "Nghĩa", "Ví dụ"],
+          rows: [
+            ["For", "vì", "He stayed home, for he was ill."],
+            ["And", "và", "She loves reading, and he enjoys writing."],
+            ["Nor", "cũng không", "He doesn't smoke, nor does he drink."],
+            ["But", "nhưng", "I wanted to go for a walk, but it started to rain."],
+            ["Or", "hoặc", "Hurry up, or you will miss the bus."],
+            ["Yet", "tuy vậy", "He is rich, yet he is unhappy."],
+            ["So", "vì vậy", "He studies hard, so he gets good grades."],
+          ],
+        },
+        { id: "f1", kind: "formula", parts: ["Clause", ",", "FANBOYS", "Clause"] },
+        { id: "c1", kind: "compare", wrong: "It was late, we went home.", right: "It was late, so we went home.", note: "Không nối 2 mệnh đề chỉ bằng dấu phẩy (comma splice)" },
+      ],
+      actions: [
+        say("Để nối hai mệnh đề độc lập, ta dùng bảy liên từ kết hợp, nhớ bằng chữ viết tắt FANBOYS."),
+        show("table"),
+        say("For, and, nor, but, or, yet, so. Ví dụ: `He studies hard, so he gets good grades.`"),
+        show("f1"),
+        say("Nhớ đặt dấu phẩy trước liên từ khi nối hai mệnh đề độc lập."),
+        show("c1"),
+        say("Lỗi rất hay gặp là nối hai mệnh đề chỉ bằng dấu phẩy. Phải thêm liên từ: `It was late, so we went home.`"),
+      ],
+    },
+    {
+      id: "s4",
+      type: "slide",
+      title: "Câu phức và dấu phẩy",
+      blocks: [
+        {
+          id: "table",
+          kind: "table",
+          headers: ["Chức năng", "Liên từ phụ thuộc"],
+          rows: [
+            ["Thời gian", "when, while, before, after, until, as soon as"],
+            ["Nguyên nhân", "because, since, as"],
+            ["Nhượng bộ", "although, though, even though"],
+            ["Điều kiện", "if, unless, provided that"],
+            ["Mục đích", "so that, in order that"],
+          ],
+        },
+        { id: "e1", kind: "example", en: "Because it was raining, we canceled the picnic.", vi: "Mệnh đề phụ đứng trước → có dấu phẩy", highlight: [","] },
+        { id: "e2", kind: "example", en: "We canceled the picnic because it was raining.", vi: "Mệnh đề phụ đứng sau → không cần dấu phẩy" },
+      ],
+      actions: [
+        show("table"),
+        say("Câu phức dùng liên từ phụ thuộc như `because`, `although`, `when`, `if`."),
+        show("e1"),
+        say("Khi mệnh đề phụ đứng trước, ta đặt dấu phẩy: `Because it was raining, we canceled the picnic.`"),
+        show("e2"),
+        say("Khi mệnh đề phụ đứng sau, không cần dấu phẩy."),
+      ],
+    },
+    {
+      id: "q1",
+      type: "sort",
+      title: "Trò chơi: Đây là kiểu câu gì?",
+      intro: "Kéo mỗi câu vào đúng kiểu câu.",
+      categories: [
+        { id: "simple", label: "Câu đơn" },
+        { id: "compound", label: "Câu ghép" },
+        { id: "complex", label: "Câu phức" },
+      ],
+      items: [
+        { text: "The dog barked loudly.", category: "simple" },
+        { text: "John and Mary went to the store.", category: "simple" },
+        { text: "He is rich, yet he is unhappy.", category: "compound" },
+        { text: "Hurry up, or you will miss the bus.", category: "compound" },
+        { text: "If you study hard, you will pass.", category: "complex" },
+        { text: "I stayed home because I was ill.", category: "complex" },
+      ],
+    },
+    {
+      id: "q2",
+      type: "fill",
+      title: "Điền từ nối",
+      intro: "Điền từ nối thích hợp vào chỗ trống.",
+      items: [
+        { sentence: "___ it rained heavily, they went hiking.", answers: ["Although", "Though", "Even though"] },
+        { sentence: "I will wait here ___ you come back.", answers: ["until", "till"] },
+        { sentence: "He talked to me ___ he knew me well.", answers: ["as if", "as though"] },
+        { sentence: "You can have coffee ___ tea.", answers: ["or"] },
+        { sentence: "She not only sings ___ also dances well.", answers: ["but"] },
+      ],
+    },
+    {
+      id: "q3",
+      type: "order",
+      title: "Sắp xếp thành câu đúng",
+      intro: "Chạm vào các từ theo đúng thứ tự để tạo thành câu.",
+      sentences: [
+        { answer: "Although she was tired, she continued working.", vi: "Mặc dù mệt, cô ấy vẫn tiếp tục làm việc." },
+        { answer: "I woke up late, so I missed the bus.", vi: "Tôi dậy muộn nên đã lỡ xe buýt." },
+        { answer: "If you study hard, you will pass the exam.", vi: "Nếu học chăm chỉ, bạn sẽ đỗ kỳ thi." },
+      ],
+    },
+  ],
+};
+
+export const clauses: Lesson = {
+  id: "clauses",
+  title: "Mệnh đề: danh từ, quan hệ, trạng ngữ",
+  summary: "who / which / that, mệnh đề xác định và không xác định, trật tự từ trong mệnh đề danh từ.",
+  level: "intermediate",
+  emoji: "🔗",
+  minutes: 20,
+  scenes: [
+    {
+      id: "s1",
+      type: "slide",
+      title: "Ba loại mệnh đề phụ thuộc",
+      blocks: [
+        {
+          id: "cards",
+          kind: "cards",
+          items: [
+            { icon: "📦", title: "Mệnh đề danh từ", text: "Làm chủ ngữ, tân ngữ: What he said surprised everyone." },
+            { icon: "🔍", title: "Mệnh đề quan hệ", text: "Bổ nghĩa cho danh từ: The book that you gave me is fascinating." },
+            { icon: "⏱️", title: "Mệnh đề trạng ngữ", text: "Thời gian, lý do, điều kiện…: After we finished dinner, we watched a movie." },
+          ],
+        },
+      ],
+      actions: [
+        say("Mệnh đề phụ thuộc chia thành ba loại theo chức năng trong câu."),
+        show("cards"),
+        say("Mệnh đề danh từ đóng vai trò như một danh từ. Mệnh đề quan hệ bổ nghĩa cho danh từ đứng trước. Mệnh đề trạng ngữ cho biết thời gian, lý do, điều kiện của hành động chính."),
+      ],
+    },
+    {
+      id: "s2",
+      type: "slide",
+      title: "Mệnh đề danh từ",
+      subtitle: "Noun clauses",
+      blocks: [
+        { id: "f1", kind: "formula", label: "Trật tự từ", parts: ["Từ để hỏi", "+", "S", "+", "V"] },
+        { id: "e1", kind: "example", en: "I don't know where he lives.", vi: "Tôi không biết anh ấy sống ở đâu.", highlight: ["where he lives"] },
+        { id: "c1", kind: "compare", wrong: "I don't know what is he doing.", right: "I don't know what he is doing.", note: "Không đảo ngữ như câu hỏi" },
+        { id: "c2", kind: "compare", wrong: "I wonder he will come or not.", right: "I wonder whether he will come or not.", note: "Câu Yes/No cần whether / if" },
+        { id: "tip", kind: "text", tone: "tip", text: "IELTS: It is widely believed **that** technology improves education." },
+      ],
+      actions: [
+        show("f1"),
+        say("Trong mệnh đề danh từ, trật tự từ giống câu trần thuật: từ để hỏi, rồi chủ ngữ, rồi động từ."),
+        show("e1"),
+        say("`I don't know where he lives.` Không nói where does he live."),
+        show("c1"),
+        show("c2"),
+        say("Với câu hỏi có hoặc không, ta cần `whether` hoặc `if`: `I wonder whether he will come.`"),
+        show("tip"),
+      ],
+    },
+    {
+      id: "s3",
+      type: "slide",
+      title: "Mệnh đề quan hệ",
+      subtitle: "who, whom, whose, which, that",
+      blocks: [
+        {
+          id: "table",
+          kind: "table",
+          headers: ["Từ", "Thay cho", "Ví dụ"],
+          rows: [
+            ["who", "Người (chủ ngữ)", "People who exercise regularly tend to be healthier."],
+            ["whom", "Người (tân ngữ)", "The man whom I met was kind."],
+            ["whose", "Sở hữu", "The girl whose bag was stolen called the police."],
+            ["which", "Vật", "The museum which was renovated is popular."],
+            ["that", "Người / vật (chỉ mệnh đề xác định)", "The book that you gave me is fascinating."],
+            ["where / when / why", "Nơi / lúc / lý do", "The town where I grew up is small."],
+          ],
+        },
+        { id: "c1", kind: "compare", wrong: "The man which lives next door is a doctor.", right: "The man who lives next door is a doctor.", note: "who cho người, which cho vật" },
+      ],
+      actions: [
+        show("table"),
+        say("`Who` dùng cho người, `which` dùng cho vật, `whose` chỉ sở hữu, còn `that` dùng được cho cả người và vật nhưng chỉ trong mệnh đề xác định."),
+        show("c1"),
+        say("Vì vậy `The man which lives next door` là sai. Phải là `The man who lives next door`."),
+      ],
+    },
+    {
+      id: "s4",
+      type: "slide",
+      title: "Xác định hay không xác định?",
+      blocks: [
+        { id: "e1", kind: "example", en: "My brother who lives in Hanoi is a doctor.", vi: "Tôi có nhiều anh/em trai; người sống ở Hà Nội là bác sĩ." },
+        { id: "e2", kind: "example", en: "My brother, who lives in Hanoi, is a doctor.", vi: "Tôi chỉ có một anh/em trai; sống ở Hà Nội chỉ là thông tin thêm." },
+        { id: "warn", kind: "text", tone: "warn", text: "Mệnh đề không xác định: **có dấu phẩy**, **không dùng that**, không được lược bỏ từ quan hệ." },
+        { id: "c1", kind: "compare", wrong: "My brother, that lives in London, is a teacher.", right: "My brother, who lives in London, is a teacher." },
+      ],
+      actions: [
+        show("e1"),
+        say("Hãy so sánh hai câu này. Câu thứ nhất không có dấu phẩy: người nói có nhiều anh em trai, và người sống ở Hà Nội là bác sĩ."),
+        show("e2"),
+        say("Câu thứ hai có dấu phẩy: người nói chỉ có một anh trai, việc sống ở Hà Nội chỉ là thông tin thêm. Dấu phẩy làm thay đổi nghĩa!"),
+        show("warn"),
+        show("c1"),
+        say("Nhớ rằng mệnh đề không xác định không dùng `that`."),
+      ],
+    },
+    {
+      id: "s5",
+      type: "slide",
+      title: "Mệnh đề trạng ngữ",
+      blocks: [
+        { id: "e1", kind: "example", en: "I will call you when I arrive.", vi: "Mệnh đề thời gian: dùng hiện tại để nói về tương lai", highlight: ["arrive"] },
+        { id: "c1", kind: "compare", wrong: "I will call you when I will arrive.", right: "I will call you when I arrive." },
+        { id: "c2", kind: "compare", wrong: "I will go out unless it doesn't rain.", right: "I will go out unless it rains.", note: "unless = if … not" },
+        { id: "e2", kind: "example", en: "He was so tired that he fell asleep.", vi: "so … that: kết quả" },
+      ],
+      actions: [
+        show("e1"),
+        say("Trong mệnh đề thời gian và điều kiện, ta dùng thì hiện tại để nói về tương lai: `when I arrive`, không phải `when I will arrive`."),
+        show("c1"),
+        show("c2"),
+        say("`Unless` đã mang nghĩa phủ định là nếu không, nên không thêm `not` sau nó nữa."),
+        show("e2"),
+      ],
+    },
+    {
+      id: "q1",
+      type: "quiz",
+      title: "Câu đố: Chọn từ đúng",
+      questions: [
+        { q: "The woman ___ lives next door is a lawyer.", options: ["who", "which"], answer: 0 },
+        { q: "I don't know ___ he will attend the meeting.", options: ["if", "unless"], answer: 0 },
+        { q: "They visited the museum ___ was recently renovated.", options: ["who", "which"], answer: 1 },
+        { q: "He can't come ___ he finishes his work.", options: ["until", "because"], answer: 0 },
+        { q: "She speaks English fluently ___ she has lived in the UK for years.", options: ["although", "because"], answer: 1 },
+      ],
+    },
+    {
+      id: "q2",
+      type: "fix",
+      title: "Sửa lỗi mệnh đề",
+      intro: "Gõ lại câu đúng.",
+      items: [
+        { wrong: "She is the girl which I met yesterday.", answers: ["She is the girl who I met yesterday.", "She is the girl whom I met yesterday.", "She is the girl that I met yesterday.", "She is the girl I met yesterday."] },
+        { wrong: "I will call you when I will arrive.", answers: ["I will call you when I arrive."] },
+        { wrong: "Do you know who is he?", answers: ["Do you know who he is?"] },
+        { wrong: "The reason because she failed is unknown.", answers: ["The reason why she failed is unknown.", "The reason that she failed is unknown."] },
+      ],
+    },
+    {
+      id: "q3",
+      type: "match",
+      title: "Ghép nửa câu",
+      intro: "Ghép hai nửa để tạo thành câu hoàn chỉnh.",
+      pairs: [
+        { left: "The town where", right: "I grew up is small." },
+        { left: "She practices every day", right: "so that she can improve." },
+        { left: "He talked", right: "as if he knew everything." },
+        { left: "What she said", right: "is important." },
+      ],
+    },
+  ],
+};
